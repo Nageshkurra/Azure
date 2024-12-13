@@ -7,11 +7,9 @@ provider "azurerm" {
   client_secret   = var.client_secret
 }
 
-resource "azurerm_resource_group" "Production" {
-  name     = var.resourcegroup1[0]
-  location = var.location[0]
+resource "azurerm_resource_group" "resourcename" {
+  for_each = toset(var.resourcegroupname)  # Convert the list to a set
+
+  name     = each.value  # The value from the set (e.g., "myrg0", "myrg1", etc.)
+  location = "East US"   # Specify the location
 }
-resource "azurerm_resource_group" "Test" {
-  name     = var.resourcegroup1[1]
-  location = var.location[1]
-}  
