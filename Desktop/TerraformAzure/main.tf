@@ -7,12 +7,11 @@ provider "azurerm" {
   client_secret   = var.client_secret
 }
 
-resource "azurerm_resource_group" "firstresource" {
-  name     = var.resource_group_name_1
-  location = var.resource_group_location_1
+resource "azurerm_resource_group" "Production" {
+  name     = var.resourcegroup1[0]
+  location = var.location[0]
 }
-
-resource "azurerm_resource_group" "Secondresource" {
-  name     = var.resource_group_name_2
-  location = var.resource_group_location_2
-}
+resource "azurerm_resource_group" "Test" {
+  name     = var.resourcegroup1[1]
+  location = var.location[1]
+}  
